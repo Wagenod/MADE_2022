@@ -1,32 +1,24 @@
 #include <iostream>
-#include <vector>
 #include <string>
-#include <stdlib.h>
-#include <ctime>
-#include <tuple>
+#include <map>
 
 using namespace std;
 
-void print_vector(vector<int>& vec, string msg){
-    cout << endl << msg << endl;
-    for (const auto& item: vec )
-        cout << item << " ";
-    cout << endl;
+void print_map(const map<string, string>& m){
+
 }
 
 
 int main(){
     int n;
-    long long num_inversions = 0;
     cin >> n;
-    vector<int> v(n);
+    map<string, string> kings_roma_map;
     
-    for(auto& item: v){
-        cin >> item;
-    }
+    //for(auto& item: v){
+    //    cin >> item;
+    //}
 
-
-    print_vector(v, "");
+    print_map(kings_roma_map);
     system("pause");
     return 0; 
 }
