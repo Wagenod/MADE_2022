@@ -17,11 +17,6 @@ struct RomaKing{
 
 void print_vector(const vector<RomaKing>& v){
     for (const RomaKing& king: v){
-        // cout << endl << "--------" << endl;
-        // cout << "king name: " << king.king_name << endl;
-        // cout << "king number: " << king.number << endl;
-        // cout << "--------" << endl;
-
         cout << king.king_name << " " << king.number << endl;
     }
 }
