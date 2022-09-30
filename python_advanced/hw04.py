@@ -1,33 +1,28 @@
-from ast import Num
-from typing import Iterable, List, Set, Tuple
 from itertools import zip_longest
-from unittest import result
-from typing import Union
-from collections.abc import Sequence
-from functools import total_ordering
 
 
 class CustomList(list):
     def __init__(self, items):
-        if not (isinstance(items, list) or isinstance(items, tuple)):
+        super().__init__()
+        if not isinstance(items, (list, tuple)):
             raise TypeError("Argument must be list or tuple")
 
+        self.__idx = -1
         self.items = list(items)
 
     def __sub__(self, another):
-        return CustomList([x - y for x,y in zip_longest(self, another, fillvalue=0)])
+        return CustomList([x - y for x, y in zip_longest(self, another, fillvalue=0)])
 
     def __rsub__(self, another):
-        return CustomList([y - x for x,y in zip_longest(self, another, fillvalue=0)])
+        return CustomList([y - x for x, y in zip_longest(self, another, fillvalue=0)])
 
     def __add__(self, another):
-        return CustomList([x + y for x,y in zip_longest(self, another, fillvalue=0)])
+        return CustomList([x + y for x, y in zip_longest(self, another, fillvalue=0)])
 
     def __radd__(self, another):
         return self.__add__(another)
-        
+    
     def __iter__(self):
-        self.__idx = -1 
         return self
 
     def __next__(self):
@@ -35,14 +30,14 @@ class CustomList(list):
         if self.__idx >= len(self.items):
             self.__idx = -1
             raise StopIteration
-        else:
-            return self.items[self.__idx]
+        
+        return self.items[self.__idx]
 
     def __repr__(self):
-        return "CustomList({})".format(self.items)
+        return f"CustomList({self.items})"
 
     def __str__(self):
-        return "CustomList items: {} sum= {}".format(self.items, sum(self.items))
+        return f"CustomList items: {self.items} sum= {sum(self.items)}"
 
     def __eq__(self, another) -> bool:
         return sum(self.items) == sum(another.items)
@@ -52,13 +47,13 @@ class CustomList(list):
 
     def __le__(self, another) -> bool:
         return sum(self.items) <= sum(another.items)
-    
+
     def __ge__(self, another) -> bool:
         return sum(self.items) >= sum(another.items)
 
     def __lt__(self, another) -> bool:
         return sum(self.items) < sum(another.items)
-    
+
     def __gt__(self, another) -> bool:
         return sum(self.items) > sum(another.items)
 
@@ -92,6 +87,3 @@ assert CustomList((2,)) == CustomList([1, 1])
 # __str__
 assert str(CustomList([12, 34, 5.2])) == "CustomList items: [12, 34, 5.2] sum= 51.2"
 print(CustomList({"123", 34, 5.2}))
-
-
-
