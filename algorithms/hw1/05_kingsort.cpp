@@ -8,7 +8,7 @@
 
 using namespace std;
 
-map<char, int> roma_to_arabic = {{'I', 1},{'V', 5}, {'X', 10}, {'L', 50}};
+const map<char, int> ROMA_TO_ARABIC = {{'I', 1},{'V', 5}, {'X', 10}, {'L', 50}};
 
 struct RomaKing{
     string king_name;
@@ -25,7 +25,7 @@ int parse_roma(const string& roma_num){
     int arabic_num = 0, last_arabic_digit = -1;
 
     for (const char& roma_digit: roma_num){
-        int current_arabic_digit = roma_to_arabic[roma_digit];
+        int current_arabic_digit = ROMA_TO_ARABIC[roma_digit];
         if (last_arabic_digit < 0){
             last_arabic_digit = current_arabic_digit;
         } else {
