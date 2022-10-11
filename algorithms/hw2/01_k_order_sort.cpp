@@ -1,11 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
-#include <ctime> // for rand
-#include <utility> // for tie
-#include <algorithm> // for copy
-#include <iterator> // for back_inserter
-
+#include <ctime>
 
 using namespace std;
 
@@ -38,14 +34,21 @@ tuple<int, int> split(vector<int>& v, int left_idx, int right_idx, int treshold)
 
 int find_k_order_stat(vector<int>& a, int l_idx, int r_idx, int k){ // [l,r)
     if (r_idx - l_idx <= 1)
-        return a[l_idx];
+        return a[k];
 
     srand(time(NULL));
     int random_idx = l_idx + rand() % (r_idx - l_idx);
+    //int treshold = a[random_idx];
 
-    int m1, m2;
-    tie(m1, m2) = split(a, l_idx, r_idx, a[random_idx]);
-    
+    //cout << "random idx: " << random_idx << " " << "trsh: " << treshold << endl;
+
+    auto [m1, m2] = split(a, l_idx, r_idx, a[random_idx]);
+
+    //cout << "after split: ";
+    //print_vector(a);
+    //cout <<"m1= "<< m1 << "m2= " << m2 << endl;
+    //cout << endl;
+
     if (k < m1){
         return find_k_order_stat(a, l_idx, m1, k);
     } else if (k >= m2){
@@ -60,21 +63,23 @@ int main(){
 
     cin >> n;
     vector<int> a(n);
-    vector<int> working_arr;
     for (int& i: a){
         cin >> i;
     }
-
-    copy(a.begin(), a.end(), back_inserter(working_arr));
 
     cin >> m;
     for (int num = 0; num < m; num++){
         int i, j, k;
         cin >> i >> j >> k;
-        cout << find_k_order_stat(working_arr, i - 1, j, k - 1 + i - 1) << endl;
-        copy(a.begin() + i - 1, a.begin() + j, working_arr.begin() + i - 1);
+        cout << find_k_order_stat(a, i - 1, j, k - 1 + i - 1) << endl;
     } 
 
+    // vector<int> a = {1, 3, 2, 1, 0, 2};
+    // auto [m1, m2] = split(a, 0, 3, 1);
+    // print_vector(a);
+    // cout << find_k_order_stat(a, 0, 3, 1) << endl; // 1 3 2
+
     system("pause");
+
     return 0;
 }
