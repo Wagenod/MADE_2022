@@ -4,7 +4,6 @@ from typing import List
 
 def find_anagrams(text: str, pattern: str) -> List[int]:
     anagrams = []
-    tmp_cnt = {}
     pattern_cnt = Counter(pattern)
     shift = 1
 
