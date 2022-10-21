@@ -16,12 +16,23 @@ void print_vector(const vector<T>& vec){
     cout << endl;
 }
 
-void radix_sort(const vector<string>& vstr, int k){
+void radix_sort(const vector<string>& vstr, int k, int m){
+    vector<int> P(vstr.size());
     for (int i = 1; i <= k; i++){
         vector<int> cnt(ALPHABET_CARD);
         for (const string& str: vstr){
-            cnt[int(str[str.size() - i]) - ASCII_BEGIN_CODE]++;
+            cnt[int(str[m - i]) - ASCII_BEGIN_CODE]++;
         }
+        vector<int> shifts(ALPHABET_CARD);
+        for(size_t j = 1; j < shifts.size(); j++){
+            shifts[j] = shifts[j - 1] + cnt[j - 1];
+        }
+
+        for (size_t l = 0; l < vstr.size(); l++){
+            int cnt_idx = int(vstr[i][m - i]) - ASCII_BEGIN_CODE
+            P[cnt_idx]
+        }
+        
         print_vector(cnt);
     }
     
@@ -39,7 +50,7 @@ int main(){
         getline(cin, item);
     }
 
-    radix_sort(strs, k);
+    radix_sort(strs, k, m);
     // for (int l = 0; l < m; l++){
 
     // }
