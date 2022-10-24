@@ -13,15 +13,15 @@ class LRUCache:
     def __setitem__(self, key, value):
         if key in self.cache:
             del self.cache[key]
-        
+
         if len(self.cache) == self.limit:
-            del self.cache[list(self.cache)[-1]]
+            del self.cache[list(self.cache)[0]]
 
         self.cache[key] = value
 
 
 if __name__ == "__main__":
-    cache = LRUCache(2)
+    cache = LRUCache(3)
 
     cache['k1'] = "val1"
     cache['k2'] = "val2"
