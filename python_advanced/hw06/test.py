@@ -12,14 +12,14 @@ class TestLRUCashe(unittest.TestCase):
         self.lru_cache['key3'] = "val3"
         self.lru_cache['key4'] = "val4"
         self.lru_cache['key5'] = "val5"
-        self.assertDictEqual(self.lru_cache.cache, {'key5': 'val5', 'key4': 'val4', 'key3': 'val3'})
+        self.assertListEqual(self.lru_cache.merge_storages(), [('key3','val3'), ('key4','val4'), ('key5', 'val5')])
 
     def test_set_single_get_multi(self):
         self.lru_cache.cache = {}
         self.lru_cache['key1'] = "val1"
         for _ in range(5):
             r = self.lru_cache['key1']
-        self.assertDictEqual(self.lru_cache.cache, {'key1': 'val1'})
+        self.assertListEqual(self.lru_cache.cache, [('key3','val3')])
 
     def test_set_multi_get_multi(self):
         self.lru_cache.cache = {}
