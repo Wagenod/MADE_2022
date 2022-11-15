@@ -12,12 +12,13 @@ class BaseWriter:
 
 
 class TxtReader(BaseReader):
-    def read(self, fileobj):
-        pass
+    def read(self, fileobj, *args, **kwargs):
+        return fileobj.read()
 
 
 class TxtWriter(BaseWriter):
-    pass
+    def write(self, data, fileobj, *args, **kwargs):
+        fileobj.write(data)
 
 
 
@@ -29,7 +30,9 @@ def dump_data(data, fileobj, writer: BaseWriter):
     writer.dump(data, fileobj)
 
 
-dump_data({"x": "1"}, fileobj, writer=JsonWriter())  # в fileobj записывается json {"x": "1"}
+with open(r"hw07//1.txt") as f:
+    print(read_data(f, TxtReader()))
+# dump_data({"x": "1"}, fileobj, writer=JsonWriter())  # в fileobj записывается json {"x": "1"}
 
-data = read_data(fileobj, reader=JsonReader())
-assert data == {"x": "1"}
+# data = read_data(fileobj, reader=JsonReader())
+# assert data == {"x": "1"}
