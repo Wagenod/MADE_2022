@@ -24,6 +24,13 @@ class TxtWriter(BaseWriter):
 
 # json
 
+class JSONReader(BaseReader):
+    def read(self, fileobj):
+        return json.load(fileobj)
+
+class JSONWriter(BaseReader):
+    def dump(self, data, fileobj):
+        json.dump(data, fileobj)
 # csv
 
 # использование
@@ -33,14 +40,25 @@ def read_data(fileobj, reader: BaseReader):
 def dump_data(data, fileobj, writer: BaseWriter):
     writer.dump(data, fileobj)
 
-ROOT_DIR = r"python_advanced\\hw07"
+if __name__ == '__main__':
+    ROOT_DIR = r"hw07\\files"
+    txt_data = "dump to txt file"
+    json_data = {
+        "name": "sathiyajith",
+        "rollno": 56,
+        "cgpa": 8.6,
+        "phonenumber": "9976770500"
+    }
 
-with open(os.path.join(ROOT_DIR, "1.txt")) as f:
-    print(read_data(f, TxtReader()))
+    with open(os.path.join(ROOT_DIR, "in.txt")) as f_in, \
+         open(os.path.join(ROOT_DIR, "out.txt"), 'w') as f_out, \
+         open(os.path.join(ROOT_DIR, "out.json"), "w") as f_json_out, \
+         open(os.path.join(ROOT_DIR, "in.json")) as f_json_in:
+        
+        print(read_data(f_in, TxtReader()))
+        dump_data(txt_data, f_out, TxtWriter())
 
-with open(os.path.join(ROOT_DIR, "2.txt"), 'w') as f:
-    dump_data("dump", f, TxtWriter())
-# dump_data({"x": "1"}, fileobj, writer=JsonWriter())  # в fileobj записывается json {"x": "1"}
+        print(read_data(f_json_in, JSONReader()))
+        dump_data(json_data, f_json_out, JSONWriter())
+        
 
-# data = read_data(fileobj, reader=JsonReader())
-# assert data == {"x": "1"}
