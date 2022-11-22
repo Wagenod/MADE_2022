@@ -1,0 +1,32 @@
+cat dog rabbit
+yellow red blue
+minsk vitebsk moscow
+rabbit house sun flower
+cat1 dog1 rabbit1
+yellow1 red1 blue1
+minsk1 vitebsk1 moscow1
+rabbit1 house1 sun1 flower1
+cat2 dog2 rabbit2
+yellow2 red2 blue2
+minsk2 vitebsk2 moscow2
+rabbit2 house2 sun2 flower2
+cat3 dog3 rabbit3
+yellow3 red3 blue3
+minsk3 vitebsk3 moscow3
+abbit3 house3 sun3 flower3
+cat4 dog4 rabbit4
+yellow4 red4 blue4
+minsk4 vitebsk4 moscow4
+rabbit4 house4 sun4 flower4
+cat5 dog5 rabbit5
+yellow5 red5 blue5
+minsk5 vitebsk5 moscow5
+rabbit5 house5 sun5 flower5
+cat6 dog6 rabbit6
+yellow6 red6 blue6
+minsk6 vitebsk6 moscow6
+rabbit6 house6 sun6 flower6
+cat7 dog7 rabbit7
+yellow7 red7 blue7
+minsk7 vitebsk7 moscow7
+rabbit7 house7 sun7 flower7
