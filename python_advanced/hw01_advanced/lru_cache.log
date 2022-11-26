@@ -1,0 +1,16 @@
+26.11.2022 17:29:22	INFO	main	hw06	Initialize LRU-cache with limit size 3
+26.11.2022 17:29:22	INFO	main	hw06	Add new pair (k1,val1) to LRU-cache
+26.11.2022 17:29:22	INFO	main	hw06	Add new pair (k2,val2) to LRU-cache
+26.11.2022 17:29:22	INFO	main	hw06	Getting item with key k3
+26.11.2022 17:29:22	WARNING	main	hw06	Item with key k3 not exist
+26.11.2022 17:29:22	INFO	main	hw06	Getting item with key k2
+26.11.2022 17:29:22	INFO	main	hw06	Got value = val2
+26.11.2022 17:29:22	INFO	main	hw06	Getting item with key k1
+26.11.2022 17:29:22	INFO	main	hw06	Got value = val1
+26.11.2022 17:29:22	INFO	main	hw06	Add new pair (k3,val3) to LRU-cache
+26.11.2022 17:29:22	INFO	main	hw06	Getting item with key k3
+26.11.2022 17:29:22	INFO	main	hw06	Got value = val3
+26.11.2022 17:29:22	INFO	main	hw06	Getting item with key k2
+26.11.2022 17:29:22	INFO	main	hw06	Got value = val2
+26.11.2022 17:29:22	INFO	main	hw06	Getting item with key k1
+26.11.2022 17:29:22	INFO	main	hw06	Got value = val1
